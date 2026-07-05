@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gate UI Demo (yuki)</title>
+  <style>
+    :root {
+      --bg: #090b10;
+      --card-bg: #121721;
+      --border: #29303d;
+      --text: #e9edf5;
+      --text-muted: #8d98aa;
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.08);
+      --red: #ff6868;
+      --red-bg: rgba(255, 104, 104, 0.08);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.08);
+      --accent: #8b9dff;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 680px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    header {
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .badge-required {
+      display: inline-block;
+      background: var(--red-bg);
+      color: var(--red);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 104, 104, 0.15);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    .summary-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .badge {
+      font-size: 0.76rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .badge--risk-medium {
+      background: var(--yellow-bg);
+      color: var(--yellow);
+      border-color: rgba(245, 158, 11, 0.15);
+    }
+    .reversibility {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .diff-section {
+      margin-bottom: 24px;
+    }
+    .diff-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+      gap: 4px;
+    }
+    .diff-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: ui-monospace, monospace;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .diff-tab:hover {
+      color: var(--text);
+    }
+    .diff-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      font-weight: 600;
+    }
+    .diff-panel {
+      display: none;
+    }
+    .diff-panel.active {
+      display: block;
+    }
+    .diff-view {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      overflow: hidden;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.76rem;
+      background: #0d1118;
+    }
+    .diff-line {
+      display: flex;
+      padding: 6px 12px;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    .diff-line--removed {
+      background: var(--red-bg);
+      color: #ff91b1;
+      border-left: 3px solid var(--red);
+    }
+    .diff-line--added {
+      background: var(--green-bg);
+      color: #5ad699;
+      border-left: 3px solid var(--green);
+    }
+    .actions-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .modify-panel {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .modify-panel textarea {
+      width: 100%;
+      min-height: 80px;
+      background: #0d1118;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text);
+      padding: 10px;
+      font-family: inherit;
+      resize: vertical;
+      box-sizing: border-box;
+      font-size: 0.85rem;
+    }
+    .modify-panel textarea:focus {
+      outline: 1px solid var(--accent);
+    }
+    .buttons-row {
+      display: flex;
+      gap: 12px;
+    }
+    button.btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #1a202b;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    button.btn:hover {
+      background: #242c3b;
+    }
+    button.btn--approve {
+      background: #163125;
+      color: #5ad699;
+      border-color: #3f8062;
+    }
+    button.btn--approve:hover {
+      background: #1f4433;
+    }
+    button.btn--deny {
+      background: #321a1d;
+      color: var(--red);
+      border-color: #80464e;
+    }
+    button.btn--deny:hover {
+      background: #462529;
+    }
+    button.btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .status-message {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+      padding: 8px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 6px;
+    }
+    .output-section {
+      display: none;
+      margin-top: 24px;
+      border-top: 1px dashed var(--border);
+      padding-top: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .output-section h3 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0 0 10px;
+    }
+    pre.json-output {
+      background: #0d1118;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px;
+      overflow: auto;
+      font-size: 0.72rem;
+      color: #8b9dff;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge-required">承認が必要です</span>
+      <h1 id="action-title">ファイル src/api/payment.ts の変更を適用する</h1>
+    </header>
+
+    <div class="summary-section">
+      <div class="badge">📂 変更ファイル: 3</div>
+      <div class="badge">➕ 追加行数: 42</div>
+      <div class="badge">➖ 削除行数: 11</div>
+      <div class="badge badge--risk-medium">⚠️ リスク: Medium</div>
+    </div>
+
+    <div class="reversibility">
+      <span>↩️ Git Revertで取り消し可能 (reversible_via_git_revert)</span>
+    </div>
+
+    <div class="diff-section">
+      <div class="diff-tabs" id="diff-tabs"></div>
+      <div id="diff-panels"></div>
+    </div>
+
+    <div class="actions-section">
+      <div class="modify-panel" id="modify-panel">
+        <textarea id="comment-input" placeholder="修正に関する指示やコメントを入力してください..."></textarea>
+        <button class="btn btn--approve" id="btn-submit-modify" type="button">変更指示を送信</button>
+      </div>
+      <div class="buttons-row" id="buttons-row">
+        <button class="btn btn--approve" id="btn-approve" type="button">承認</button>
+        <button class="btn btn--deny" id="btn-deny" type="button">拒否</button>
+        <button class="btn" id="btn-modify" type="button">修正指示</button>
+      </div>
+      <div class="status-message" id="status-message">送信済み (デモ表示のみ)</div>
+    </div>
+
+    <div class="output-section" id="output-section">
+      <h3>出力イベント (Gate Resolution Event)</h3>
+      <pre class="json-output" id="json-output"></pre>
+    </div>
+  </div>
+
+  <script>
+    const irData = {
+      "type": "gate",
+      "gate_id": "gate_20260705_001",
+      "action": "ファイル src/api/payment.ts の変更を適用する",
+      "effect_summary": {
+        "files_changed": 3,
+        "lines_added": 42,
+        "lines_removed": 11,
+        "risk_level": "medium"
+      },
+      "reversibility": "reversible_via_git_revert",
+      "evidence": {
+        "type": "diff",
+        "diffs": [
+          {
+            "file": "src/api/payment.ts",
+            "before": "function chargeCard(amount) {\n  return stripe.charge(amount);\n}",
+            "after": "function chargeCard(amount, currency = 'jpy') {\n  return stripe.charge(amount, { currency });\n}"
+          },
+          {
+            "file": "src/api/refund.ts",
+            "before": "function refund(id) {\n  return stripe.refund(id);\n}",
+            "after": "function refund(id, reason) {\n  return stripe.refund(id, { reason });\n}"
+          }
+        ]
+      },
+      "allowed_resolutions": ["approve", "deny", "modify"]
+    };
+
+    const diffTabs = document.getElementById("diff-tabs");
+    const diffPanels = document.getElementById("diff-panels");
+    const modifyPanel = document.getElementById("modify-panel");
+    const buttonsRow = document.getElementById("buttons-row");
+    const statusMessage = document.getElementById("status-message");
+    const outputSection = document.getElementById("output-section");
+    const jsonOutput = document.getElementById("json-output");
+    const commentInput = document.getElementById("comment-input");
+
+    // Diffタブおよびパネルの動的生成
+    irData.evidence.diffs.forEach((diff, index) => {
+      // タブの作成
+      const tabButton = document.createElement("button");
+      tabButton.className = `diff-tab ${index === 0 ? 'active' : ''}`;
+      tabButton.textContent = diff.file.split('/').pop();
+      tabButton.dataset.index = index;
+      tabButton.type = "button";
+      tabButton.addEventListener("click", () => {
+        document.querySelectorAll(".diff-tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".diff-panel").forEach(p => p.classList.remove("active"));
+        tabButton.classList.add("active");
+        document.getElementById(`diff-panel-${index}`).classList.add("active");
+      });
+      diffTabs.appendChild(tabButton);
+
+      // パネルの作成
+      const panel = document.createElement("div");
+      panel.className = `diff-panel ${index === 0 ? 'active' : ''}`;
+      panel.id = `diff-panel-${index}`;
+
+      const diffView = document.createElement("div");
+      diffView.className = "diff-view";
+
+      // 削除された行 (Before)
+      diff.before.split('\n').forEach(line => {
+        const lineEl = document.createElement("div");
+        lineEl.className = "diff-line diff-line--removed";
+        lineEl.textContent = "- " + line;
+        diffView.appendChild(lineEl);
+      });
+
+      // 追加された行 (After)
+      diff.after.split('\n').forEach(line => {
+        const lineEl = document.createElement("div");
+        lineEl.className = "diff-line diff-line--added";
+        lineEl.textContent = "+ " + line;
+        diffView.appendChild(lineEl);
+      });
+
+      panel.appendChild(diffView);
+      diffPanels.appendChild(panel);
+    });
+
+    // 承認イベント処理
+    function handleResolve(resolution, comment = null) {
+      document.querySelectorAll(".btn").forEach(btn => btn.disabled = true);
+      buttonsRow.style.display = "none";
+      modifyPanel.style.display = "none";
+      statusMessage.style.display = "block";
+
+      const event = {
+        "gate_id": irData.gate_id,
+        "resolution": resolution,
+        "actor": "demo_user",
+        "timestamp": new Date().toISOString(),
+        "effect_summary_hash": "sha256:88998877665544332211abcdef", // 静的モックハッシュ
+        "modifications": resolution === "modify" ? { "comment": comment } : null,
+        "comment": comment || undefined
+      };
+      if (event.comment === undefined) delete event.comment;
+
+      jsonOutput.textContent = JSON.stringify(event, null, 2);
+      outputSection.style.display = "block";
+      console.log("Gate resolution emitted:", event);
+    }
+
+    // ボタンのイベントリスナー
+    document.getElementById("btn-approve").addEventListener("click", () => handleResolve("approve"));
+    document.getElementById("btn-deny").addEventListener("click", () => handleResolve("deny"));
+    
+    document.getElementById("btn-modify").addEventListener("click", () => {
+      modifyPanel.style.display = "flex";
+      buttonsRow.style.display = "none";
+    });
+
+    document.getElementById("btn-submit-modify").addEventListener("click", () => {
+      const comment = commentInput.value.trim();
+      handleResolve("modify", comment || "修正の依頼");
+    });
+  </script>
+</body>
+</html>
