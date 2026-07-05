@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_22",
+    "title": "Evaluation: Plan workflow task dependencies using Graph DAG",
+    "subtitle": "Prompt #22 validation",
+    "text": "This interface verifies successful rendering for: \"Plan workflow task dependencies using Graph DAG\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_7",
+    "title": "Evaluation: Stock price watch for NVIDIA showing live line chart",
+    "subtitle": "Prompt #7 validation",
+    "text": "This interface verifies successful rendering for: \"Stock price watch for NVIDIA showing live line chart\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

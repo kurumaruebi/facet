@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_30",
+    "title": "Evaluation: Live news feed monitoring specialized topics",
+    "subtitle": "Prompt #30 validation",
+    "text": "This interface verifies successful rendering for: \"Live news feed monitoring specialized topics\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_1",
+    "title": "Evaluation: Flight search SFO to HND",
+    "subtitle": "Prompt #1 validation",
+    "text": "This interface verifies successful rendering for: \"Flight search SFO to HND\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_26",
+    "title": "Evaluation: Research paper citation network analyzer",
+    "subtitle": "Prompt #26 validation",
+    "text": "This interface verifies successful rendering for: \"Research paper citation network analyzer\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

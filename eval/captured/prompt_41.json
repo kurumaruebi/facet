@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_41",
+    "title": "Evaluation: Schedule meeting with multiple users calendar",
+    "subtitle": "Prompt #41 validation",
+    "text": "This interface verifies successful rendering for: \"Schedule meeting with multiple users calendar\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

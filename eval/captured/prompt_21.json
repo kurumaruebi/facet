@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_21",
+    "title": "Evaluation: Automatic derivation of system configuration approvals",
+    "subtitle": "Prompt #21 validation",
+    "text": "This interface verifies successful rendering for: \"Automatic derivation of system configuration approvals\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

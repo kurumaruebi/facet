@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_48",
+    "title": "Evaluation: Task manager app workflow sequence details",
+    "subtitle": "Prompt #48 validation",
+    "text": "This interface verifies successful rendering for: \"Task manager app workflow sequence details\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

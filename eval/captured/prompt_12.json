@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_12",
+    "title": "Evaluation: Approve trade execution for 500 shares of AAPL",
+    "subtitle": "Prompt #12 validation",
+    "text": "This interface verifies successful rendering for: \"Approve trade execution for 500 shares of AAPL\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

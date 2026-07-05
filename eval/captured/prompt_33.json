@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_33",
+    "title": "Evaluation: Checklist for company compliance audits",
+    "subtitle": "Prompt #33 validation",
+    "text": "This interface verifies successful rendering for: \"Checklist for company compliance audits\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

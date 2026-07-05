@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_31",
+    "title": "Evaluation: Review legal template agreement changes",
+    "subtitle": "Prompt #31 validation",
+    "text": "This interface verifies successful rendering for: \"Review legal template agreement changes\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

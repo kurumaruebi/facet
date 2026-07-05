@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_20",
+    "title": "Evaluation: Inspect current steps and I/O logs of an AI agent run",
+    "subtitle": "Prompt #20 validation",
+    "text": "This interface verifies successful rendering for: \"Inspect current steps and I/O logs of an AI agent run\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

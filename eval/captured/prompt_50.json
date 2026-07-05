@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_50",
+    "title": "Evaluation: Git commit history show with interactive timeline",
+    "subtitle": "Prompt #50 validation",
+    "text": "This interface verifies successful rendering for: \"Git commit history show with interactive timeline\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

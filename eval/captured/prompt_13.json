@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_13",
+    "title": "Evaluation: Audit travel expense reports",
+    "subtitle": "Prompt #13 validation",
+    "text": "This interface verifies successful rendering for: \"Audit travel expense reports\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

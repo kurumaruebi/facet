@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_29",
+    "title": "Evaluation: Market landscape analysis for cloud infrastructure",
+    "subtitle": "Prompt #29 validation",
+    "text": "This interface verifies successful rendering for: \"Market landscape analysis for cloud infrastructure\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

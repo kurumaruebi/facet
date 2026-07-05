@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_35",
+    "title": "Evaluation: Fleet coordinates mapping for delivery trucks",
+    "subtitle": "Prompt #35 validation",
+    "text": "This interface verifies successful rendering for: \"Fleet coordinates mapping for delivery trucks\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

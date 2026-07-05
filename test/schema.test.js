@@ -5,7 +5,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 
 const schema = JSON.parse(readFileSync(new URL("../schema/facet.schema.json", import.meta.url)));
 const validate = new Ajv2020({ strict: true }).compile(schema);
-const names = ["gstack", "linzumi", "crustdata", "jinba"];
+const names = ["gstack", "linzumi", "crustdata", "jinba", "agent_scrub"];
 
 describe("Facet JSON Schema", () => {
   for (const name of names) {

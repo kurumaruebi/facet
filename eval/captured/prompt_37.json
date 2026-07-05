@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_37",
+    "title": "Evaluation: Shift calendar planning timeline and publishing gate",
+    "subtitle": "Prompt #37 validation",
+    "text": "This interface verifies successful rendering for: \"Shift calendar planning timeline and publishing gate\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

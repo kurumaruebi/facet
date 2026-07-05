@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_38",
+    "title": "Evaluation: Interactive math formula plotting based on controls",
+    "subtitle": "Prompt #38 validation",
+    "text": "This interface verifies successful rendering for: \"Interactive math formula plotting based on controls\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

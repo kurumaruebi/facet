@@ -1,0 +1,67 @@
+{
+  "root": {
+    "type": "collection",
+    "id": "agent_scrub_dashboard",
+    "title": "Agent Run Inspector",
+    "subtitle": "Scrub through the timeline to see tool I/O and code changes.",
+    "layout": "feed",
+    "children": [
+      {
+        "type": "control",
+        "id": "step_scrub",
+        "kind": "range",
+        "label": "Scrub Agent Timeline (Step 1 to 5)",
+        "bind": "step_idx",
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "status",
+        "title": "Agent Status",
+        "state": "running",
+        "message": "Step {step_idx} of 5",
+        "progress": { "bind": "progress" }
+      },
+      {
+        "type": "card",
+        "id": "tool_io_card",
+        "title": "Tool Execution: {current_tool}",
+        "fields": [
+          { "label": "Status", "bind": "tool_status" },
+          { "label": "Output Summary", "bind": "tool_output" }
+        ]
+      },
+      {
+        "type": "diff",
+        "title": "File state changes (Workspace)",
+        "before": { "bind": "before_code" },
+        "after": { "bind": "after_code" },
+        "beforeLabel": "Original",
+        "afterLabel": "Modified"
+      },
+      {
+        "type": "gate",
+        "id": "scrub_approval_gate",
+        "action": "Proceed with final commit?",
+        "effect_summary": {
+          "reversibility": "Can be reverted via git",
+          "blast_radius": "Workspace files"
+        }
+      }
+    ]
+  },
+  "data": {
+    "step_idx": 1,
+    "progress": 20,
+    "current_tool": "read_file",
+    "tool_status": "success",
+    "tool_output": "Read src/renderer.js successfully.",
+    "before_code": "const VERSION = '0.0.9';",
+    "after_code": "const VERSION = '0.0.9';"
+  },
+  "links": [],
+  "params": {
+    "step_idx": 1
+  }
+}

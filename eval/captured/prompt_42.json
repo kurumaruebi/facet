@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_42",
+    "title": "Evaluation: Marketing campaign draft verification diff and gate",
+    "subtitle": "Prompt #42 validation",
+    "text": "This interface verifies successful rendering for: \"Marketing campaign draft verification diff and gate\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

@@ -17,6 +17,10 @@
           </div>
         </div>
         <div class="host-actions">
+          <div class="host-live-prompt">
+            <input id="live-input" class="host-input" type="text" placeholder="Prompt for live UI..." aria-label="Live prompt input" />
+            <button id="live-emit" class="host-button" type="button">Emit & Render</button>
+          </div>
           <label class="host-select">
             <span>Demo</span>
             <select id="demo-select">
@@ -24,6 +28,7 @@
               <option value="linzumi">Linzumi</option>
               <option value="crustdata">Crustdata</option>
               <option value="jinba">Jinba</option>
+              <option value="agent_scrub">Agent Scrub</option>
             </select>
           </label>
           <button id="fallback-demo" class="host-button" type="button">Test fallback</button>
@@ -35,7 +40,14 @@
       </nav>
       <div class="host-board">
         <section id="rendered" aria-label="Rendered Facet interface"></section>
-        <pre id="raw" class="host-raw" aria-label="Raw Facet IR"></pre>
+        <div class="host-right-panel">
+          <div class="host-tabs">
+            <button id="tab-raw" class="host-tab active" type="button">Raw IR</button>
+            <button id="tab-tree" class="host-tab" type="button">Composition Tree</button>
+          </div>
+          <pre id="raw" class="host-raw" aria-label="Raw Facet IR"></pre>
+          <div id="tree-view" class="host-tree-view" aria-label="Composition Tree" style="display: none;"></div>
+        </div>
       </div>
     </main>
     <script type="module" src="/src/demo.js"></script>

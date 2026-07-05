@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_18",
+    "title": "Evaluation: Merge pull request code review diff and build checks",
+    "subtitle": "Prompt #18 validation",
+    "text": "This interface verifies successful rendering for: \"Merge pull request code review diff and build checks\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

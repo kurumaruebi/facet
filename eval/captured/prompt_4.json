@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_4",
+    "title": "Evaluation: Visa requirements for US citizen visiting Vietnam",
+    "subtitle": "Prompt #4 validation",
+    "text": "This interface verifies successful rendering for: \"Visa requirements for US citizen visiting Vietnam\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

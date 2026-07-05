@@ -4,18 +4,37 @@
 .host-brand__mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: #e9edf5; color: #090b10; font-weight: 900; }
 .host-brand h1 { margin: 0; font-size: 1rem; }
 .host-brand p { margin: 2px 0 0; color: #8d98aa; font-size: .75rem; }
-.host-actions { display: flex; align-items: center; gap: 12px; }
+.host-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.host-live-prompt { display: flex; align-items: center; gap: 8px; }
+.host-input { border: 1px solid #394151; border-radius: 8px; padding: 7px 10px; background: #151b25; color: #dce2ec; font-size: .8rem; width: 220px; }
 .host-select { display: flex; align-items: center; gap: 7px; color: #a7b0c0; font-size: .8rem; }
 .host-select select { border: 1px solid #394151; border-radius: 8px; padding: 7px 9px; background: #151b25; color: #dce2ec; }
 .host-toggle { display: flex; align-items: center; gap: 7px; color: #a7b0c0; font-size: .8rem; }
 .host-button { border: 1px solid #394151; border-radius: 8px; padding: 7px 10px; background: #151b25; color: #dce2ec; cursor: pointer; }
 .host-board { display: grid; grid-template-columns: 1fr; gap: 16px; }
-.host-raw { display: none; margin: 0; overflow: auto; max-height: calc(100vh - 120px); border: 1px solid #29303d; border-radius: 14px; padding: 16px; background: #0d1118; color: #95a2b6; font-size: .72rem; white-space: pre-wrap; }
+.host-right-panel { display: none; }
+#app[data-raw-visible="true"] .host-right-panel { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 16px; align-self: start; }
+
+.host-tabs { display: flex; border-bottom: 1px solid #29303d; gap: 8px; margin-bottom: 4px; }
+.host-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: #8d98aa; padding: 6px 12px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.2s ease; }
+.host-tab:hover { color: #e9edf5; }
+.host-tab.active { color: #8b9dff; border-bottom-color: #8b9dff; }
+
+.host-raw { margin: 0; overflow: auto; max-height: calc(100vh - 180px); border: 1px solid #29303d; border-radius: 14px; padding: 16px; background: #0d1118; color: #95a2b6; font-size: .72rem; white-space: pre-wrap; width: 100%; }
+
+.host-tree-view { border: 1px solid #29303d; border-radius: 14px; padding: 16px; background: #0d1118; color: #e9edf5; overflow: auto; max-height: calc(100vh - 180px); font-size: 0.8rem; width: 100%; }
+.tree-node { margin: 4px 0; font-family: ui-monospace, monospace; }
+.tree-node__summary { display: flex; align-items: center; gap: 6px; padding: 4px 6px; border-radius: 6px; cursor: default; }
+.tree-node__summary:hover { background: rgba(255,255,255,0.03); }
+.tree-node__type { color: #8b9dff; font-weight: bold; }
+.tree-node__id { color: #8d98aa; font-size: 0.72rem; }
+.tree-node__children { margin-left: 16px; border-left: 1px dashed #29303d; padding-left: 12px; }
+
 #app[data-raw-visible="true"] .host-board { grid-template-columns: minmax(0, 1fr) minmax(320px, .8fr); }
-#app[data-raw-visible="true"] .host-raw { display: block; position: sticky; top: 16px; align-self: start; }
+
 @media (max-width: 820px) {
   .host-shell { padding: 14px; }
   .host-nav { align-items: flex-start; flex-direction: column; }
   #app[data-raw-visible="true"] .host-board { grid-template-columns: 1fr; }
-  #app[data-raw-visible="true"] .host-raw { position: static; }
+  #app[data-raw-visible="true"] .host-right-panel { position: static; }
 }

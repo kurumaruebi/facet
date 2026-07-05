@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_39",
+    "title": "Evaluation: Quiz questions card for spaced repetition flashcards",
+    "subtitle": "Prompt #39 validation",
+    "text": "This interface verifies successful rendering for: \"Quiz questions card for spaced repetition flashcards\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

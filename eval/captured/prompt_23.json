@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_23",
+    "title": "Evaluation: CI/CD run details and logs for failed pipeline",
+    "subtitle": "Prompt #23 validation",
+    "text": "This interface verifies successful rendering for: \"CI/CD run details and logs for failed pipeline\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

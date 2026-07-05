@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_16",
+    "title": "Evaluation: Medication schedule reminder for hypertension",
+    "subtitle": "Prompt #16 validation",
+    "text": "This interface verifies successful rendering for: \"Medication schedule reminder for hypertension\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

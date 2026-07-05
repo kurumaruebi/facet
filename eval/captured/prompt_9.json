@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_9",
+    "title": "Evaluation: Investment portfolio growth performance analysis",
+    "subtitle": "Prompt #9 validation",
+    "text": "This interface verifies successful rendering for: \"Investment portfolio growth performance analysis\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

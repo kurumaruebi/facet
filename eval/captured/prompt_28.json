@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_28",
+    "title": "Evaluation: Conversation history logs showing full chat zoom",
+    "subtitle": "Prompt #28 validation",
+    "text": "This interface verifies successful rendering for: \"Conversation history logs showing full chat zoom\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_2",
+    "title": "Evaluation: Show trip itinerary for Paris vacation",
+    "subtitle": "Prompt #2 validation",
+    "text": "This interface verifies successful rendering for: \"Show trip itinerary for Paris vacation\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

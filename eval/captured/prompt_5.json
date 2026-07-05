@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_5",
+    "title": "Evaluation: Compare iPhone 16 Pro and Samsung S24 Ultra",
+    "subtitle": "Prompt #5 validation",
+    "text": "This interface verifies successful rendering for: \"Compare iPhone 16 Pro and Samsung S24 Ultra\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

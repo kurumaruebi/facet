@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_6",
+    "title": "Evaluation: Checkout summary for cart containing laptop and mouse",
+    "subtitle": "Prompt #6 validation",
+    "text": "This interface verifies successful rendering for: \"Checkout summary for cart containing laptop and mouse\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

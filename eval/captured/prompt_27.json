@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_27",
+    "title": "Evaluation: Fact-checking claims against source documents",
+    "subtitle": "Prompt #27 validation",
+    "text": "This interface verifies successful rendering for: \"Fact-checking claims against source documents\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

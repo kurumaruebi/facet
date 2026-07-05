@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_24",
+    "title": "Evaluation: Shadow deployment comparison between V1 and V2 models",
+    "subtitle": "Prompt #24 validation",
+    "text": "This interface verifies successful rendering for: \"Shadow deployment comparison between V1 and V2 models\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

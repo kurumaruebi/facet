@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_19",
+    "title": "Evaluation: Explore Python stack trace from exceptions",
+    "subtitle": "Prompt #19 validation",
+    "text": "This interface verifies successful rendering for: \"Explore Python stack trace from exceptions\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_47",
+    "title": "Evaluation: Database scheme migration approval checklist",
+    "subtitle": "Prompt #47 validation",
+    "text": "This interface verifies successful rendering for: \"Database scheme migration approval checklist\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

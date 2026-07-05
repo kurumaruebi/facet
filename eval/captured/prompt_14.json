@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_14",
+    "title": "Evaluation: Symptom checker for seasonal allergy",
+    "subtitle": "Prompt #14 validation",
+    "text": "This interface verifies successful rendering for: \"Symptom checker for seasonal allergy\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

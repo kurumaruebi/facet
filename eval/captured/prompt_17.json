@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_17",
+    "title": "Evaluation: Clinical trial options and risk analysis",
+    "subtitle": "Prompt #17 validation",
+    "text": "This interface verifies successful rendering for: \"Clinical trial options and risk analysis\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

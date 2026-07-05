@@ -1,0 +1,20 @@
+{
+  "root": {
+    "type": "card",
+    "id": "eval_card_3",
+    "title": "Evaluation: Restaurant recommendations in Kyoto",
+    "subtitle": "Prompt #3 validation",
+    "text": "This interface verifies successful rendering for: \"Restaurant recommendations in Kyoto\"",
+    "annotations": {
+      "confidence": {
+        "value": "99%"
+      },
+      "freshness": {
+        "value": "1s"
+      }
+    }
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}
