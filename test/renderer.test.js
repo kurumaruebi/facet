@@ -116,6 +116,20 @@ describe("renderer contract", () => {
 
     result.querySelector("tbody tr").click();
     assert.deepEqual(events, [["select", "results", { name: "Selected" }]]);
+
+    const keyboardEvent = new window.KeyboardEvent("keydown", {
+      key: "Enter",
+      bubbles: true,
+    });
+    result.querySelector("tbody tr").dispatchEvent(keyboardEvent);
+    assert.deepEqual(events[1], ["select", "results", { name: "Selected" }]);
+  });
+
+  it("degrades unsafe link and media protocols instead of navigating or fetching", () => {
+    const link = render({ type: "text", text: "unsafe", href: "javascript:alert(1)" });
+    const media = render({ type: "media", kind: "file", src: "javascript:alert(1)" });
+    assert.equal(link.dataset.fallback, "true");
+    assert.equal(media.dataset.fallback, "true");
   });
 
   it("lets the interaction layer replace the gate slot", () => {
@@ -130,5 +144,184 @@ describe("renderer contract", () => {
     } finally {
       registerPrimitive("gate", original);
     }
+  });
+
+  it("renders card fields, collections, trees, graphs, and timelines", () => {
+    const card = render({
+      type: "card",
+      title: "Record",
+      fields: [
+        { label: "Amount", value: 1200, format: "number" },
+        { label: "Missing", bind: "missing" },
+      ],
+    });
+    assert.equal(card.querySelectorAll("dt").length, 2);
+    assert.match(card.textContent, /1,200/);
+
+    const collection = render({
+      type: "collection",
+      layout: "grid",
+      items: [{ name: "One" }, { name: "Two" }],
+      item: { type: "text", bind: "name" },
+    });
+    assert.deepEqual(
+      [...collection.querySelectorAll(".facet-text")].map((node) => node.textContent),
+      ["One", "Two"],
+    );
+
+    const tree = render({
+      type: "tree",
+      items: [{
+        label: "Root",
+        children: [{ label: "Leaf" }],
+      }],
+    });
+    assert.equal(tree.querySelectorAll("details").length, 2);
+
+    const graph = render({
+      type: "graph",
+      nodes: [{ id: "a", label: "A" }, { id: "b", label: "B" }],
+      edges: [{ from: "a", to: "b" }],
+    });
+    assert.equal(graph.querySelectorAll(".facet-graph__node").length, 2);
+    assert.match(graph.textContent, /a → b/);
+
+    const timeline = render({
+      type: "timeline",
+      items: [
+        { time: "Now", title: "Started", description: "Running" },
+        { type: "text", text: "Nested event" },
+      ],
+    });
+    assert.equal(timeline.querySelectorAll(".facet-timeline__event").length, 2);
+    assert.match(timeline.textContent, /Nested event/);
+  });
+
+  it("renders chart, map, media, diff, and status states", () => {
+    const emptyChart = render({ type: "chart", data: [] });
+    assert.match(emptyChart.textContent, /No chart data/);
+
+    const map = render({
+      type: "map",
+      points: [{ label: "HQ", x: 30, y: 40 }],
+    });
+    assert.equal(map.querySelector(".facet-map__marker").textContent, "HQ");
+    assert.match(render({ type: "map" }).textContent, /Map/);
+
+    const image = render({
+      type: "media",
+      kind: "image",
+      src: "https://example.com/image.png",
+      alt: "Preview",
+      caption: "Image caption",
+    });
+    assert.equal(image.querySelector("img").alt, "Preview");
+    assert.match(image.textContent, /Image caption/);
+
+    const audio = render({
+      type: "media",
+      kind: "audio",
+      src: "https://example.com/audio.mp3",
+    });
+    assert(audio.querySelector("audio").controls);
+
+    const file = render({
+      type: "media",
+      kind: "file",
+      src: "https://example.com/report.pdf",
+      label: "Report",
+    });
+    assert.equal(file.querySelector("a").textContent, "Report");
+
+    const diff = render({
+      type: "diff",
+      before: { bind: "before" },
+      after: { bind: "after" },
+      children: [{ type: "text", text: "Evidence" }],
+    }, {
+      data: { before: "old", after: "new" },
+    });
+    assert.match(diff.textContent, /old/);
+    assert.match(diff.textContent, /new/);
+    assert.match(diff.textContent, /Evidence/);
+
+    const status = render({
+      type: "status",
+      state: "running",
+      message: "Working",
+      progress: 50,
+      logs: ["one", "two"],
+    });
+    assert.equal(status.querySelector("progress").value, 50);
+    assert.match(status.querySelector("pre").textContent, /one\ntwo/);
+  });
+
+  it("renders and emits every control kind", () => {
+    const values = new Map([
+      ["choice", "b"],
+      ["toggle", false],
+      ["text", "initial"],
+    ]);
+    const changes = [];
+    const ctx = {
+      params: {
+        get: (name) => values.get(name),
+        set: (name, value) => {
+          values.set(name, value);
+          changes.push([name, value]);
+        },
+      },
+      emit: (event, id, payload) => changes.push([event, id, payload]),
+    };
+
+    const choice = render({
+      type: "control",
+      id: "choice-control",
+      kind: "choice",
+      bind: "choice",
+      options: [{ label: "A", value: "a" }, "b"],
+    }, ctx);
+    assert.equal(choice.querySelector("select").value, "b");
+    choice.querySelector("select").value = "a";
+    choice.querySelector("select").dispatchEvent(new window.Event("input"));
+
+    const toggle = render({
+      type: "control",
+      id: "toggle-control",
+      kind: "toggle",
+      bind: "toggle",
+    }, ctx);
+    toggle.querySelector("input").checked = true;
+    toggle.querySelector("input").dispatchEvent(new window.Event("input"));
+
+    const text = render({
+      type: "control",
+      id: "text-control",
+      kind: "field",
+      bind: "text",
+      placeholder: "Type",
+    }, ctx);
+    text.querySelector("input").value = "updated";
+    text.querySelector("input").dispatchEvent(new window.Event("input"));
+
+    assert.deepEqual(values.get("choice"), "a");
+    assert.equal(values.get("toggle"), true);
+    assert.equal(values.get("text"), "updated");
+    assert.equal(changes.filter(([event]) => event === "change").length, 3);
+  });
+
+  it("formats bound text values and handles invalid documents", () => {
+    const currency = render(
+      { type: "text", bind: "price", format: "currency" },
+      { data: { price: 12.5 } },
+    );
+    assert.match(currency.textContent, /12\.50/);
+
+    const date = render(
+      { type: "text", bind: "date", format: "date" },
+      { data: { date: "2026-07-05T00:00:00Z" } },
+    );
+    assert(date.textContent.length > 0);
+    assert.equal(renderDocument(null).dataset.fallback, "true");
   });
 });

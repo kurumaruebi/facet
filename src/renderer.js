@@ -15,18 +15,10 @@ const TYPES = [
   "status",
 ];
 
-const SVG_NS = "http://www.w3.org/2000/svg";
-
 function element(tag, className, text) {
   const el = document.createElement(tag);
   if (className) el.className = className;
   if (text !== undefined && text !== null) el.textContent = String(text);
-  return el;
-}
-
-function svgElement(tag, attributes = {}) {
-  const el = document.createElementNS(SVG_NS, tag);
-  Object.entries(attributes).forEach(([key, value]) => el.setAttribute(key, value));
   return el;
 }
 
@@ -35,6 +27,13 @@ function append(parent, ...children) {
     parent.append(child instanceof Node ? child : document.createTextNode(String(child)));
   });
   return parent;
+}
+
+function safeURL(value, protocols) {
+  if (typeof value !== "string" || !value.trim()) throw new TypeError("URL is required");
+  const url = new URL(value, document.baseURI);
+  if (!protocols.includes(url.protocol)) throw new TypeError(`Unsafe URL protocol: ${url.protocol}`);
+  return url.href;
 }
 
 function pathValue(source, path) {
@@ -121,7 +120,7 @@ function renderText(node, ctx) {
   const body = element(tag, `facet-text facet-text--${tag}`, nodeValue(node, ctx));
   if (node.href) {
     const link = element("a", "facet-link");
-    link.href = resolve(node.href, ctx);
+    link.href = safeURL(resolve(node.href, ctx), ["http:", "https:", "mailto:"]);
     link.target = "_blank";
     link.rel = "noreferrer";
     append(link, body);
@@ -207,7 +206,13 @@ function renderTable(node, ctx) {
     const tr = element("tr");
     if (node.id) {
       tr.tabIndex = 0;
-      tr.addEventListener("click", () => ctx.emit?.("select", node.id, row));
+      const selectRow = () => ctx.emit?.("select", node.id, row);
+      tr.addEventListener("click", selectRow);
+      tr.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        selectRow();
+      });
     }
     columns.forEach((column) => {
       const td = element("td");
@@ -350,7 +355,10 @@ function renderMap(node, ctx) {
 
 function renderMedia(node, ctx) {
   const media = element("figure", "facet-media");
-  const src = resolve(node.src ?? node.url ?? (node.bind ? resolveBind(node.bind, ctx) : ""), ctx);
+  const src = safeURL(
+    resolve(node.src ?? node.url ?? (node.bind ? resolveBind(node.bind, ctx) : ""), ctx),
+    ["http:", "https:", "blob:"],
+  );
   const kind = node.kind ?? node.mediaType ?? "file";
   let content;
   if (kind === "image") {

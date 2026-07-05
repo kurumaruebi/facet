@@ -118,4 +118,19 @@ describe("interaction runtime", () => {
     assert.match(event.effect_summary_hash, /^sha256:[a-f0-9]{64}$/);
     assert.equal(event.modifications, null);
   });
+
+  it("degrades a Gate with unsupported resolution values", () => {
+    const host = document.createElement("div");
+    document.body.append(host);
+    mountDocument({
+      root: {
+        type: "gate",
+        id: "invalid_gate",
+        resolutions: ["approve", "execute-arbitrary-action"],
+      },
+    }, host);
+
+    assert.equal(host.firstElementChild.dataset.fallback, "true");
+    assert.equal(host.querySelector("button"), null);
+  });
 });

@@ -100,6 +100,14 @@
           "type": "array",
           "items": { "$ref": "#/$defs/node" }
         },
+        "resolutions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["approve", "deny", "modify"]
+          }
+        },
         "columns": {
           "type": "array",
           "items": {

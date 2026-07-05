@@ -75,6 +75,13 @@ export function renderGate(node, ctx) {
 
   const actions = element("div", "facet-gate__actions");
   const allowed = node.resolutions ?? ["approve", "deny", "modify"];
+  if (
+    !Array.isArray(allowed)
+    || !allowed.length
+    || allowed.some((resolution) => !["approve", "deny", "modify"].includes(resolution))
+  ) {
+    throw new TypeError("Gate resolutions must be approve, deny, or modify");
+  }
   allowed.forEach((resolution) => {
     const button = element(
       "button",

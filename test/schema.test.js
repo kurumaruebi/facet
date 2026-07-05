@@ -30,4 +30,13 @@ describe("Facet JSON Schema", () => {
       },
     }), false);
   });
+
+  it("rejects Gate resolution values outside the event contract", () => {
+    assert.equal(validate({
+      root: {
+        type: "gate",
+        resolutions: ["approve", "execute"],
+      },
+    }), false);
+  });
 });

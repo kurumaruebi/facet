@@ -21,6 +21,32 @@ Software Interfaces).
 
 The renderer is a plain library (`render(ir) → DOM`), not an MCP server. MCP is v1.
 
+## Run locally
+
+Requires Node.js 20 or later.
+
+```bash
+npm install
+npm run dev
+```
+
+Open the URL printed by Vite. The demo selector renders the gstack, Linzumi, Crustdata,
+and Jinba examples through the same renderer. `Show raw IR` displays the source document,
+and `Test fallback` verifies unknown primitives degrade without throwing.
+
+```bash
+npm test       # renderer, interaction, and JSON Schema tests
+npm run build  # production build
+npm run check  # test + build
+```
+
+Main implementation:
+
+- `src/renderer.js` — deterministic primitive registry and `render(node, ctx)`.
+- `src/interaction.js` — Gate, LINK routing, and local BIND parameter state.
+- `schema/facet.schema.json` — closed 14-primitive IR contract.
+- `examples/` — four schema-valid demo documents.
+
 ## gstack
 
 This repo requires [gstack](https://github.com/garrytan/gstack) for AI-assisted work. Install once:
