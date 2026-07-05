@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.gstack/
+.DS_Store
+node_modules/
+dist/
