@@ -1,0 +1,43 @@
+{
+  "root": {
+    "type": "collection",
+    "id": "gstack_review",
+    "title": "gstack /review",
+    "subtitle": "Three findings require a human decision.",
+    "layout": "feed",
+    "children": [
+      {
+        "type": "status",
+        "title": "Review checks",
+        "state": "passed",
+        "message": "42 tests passed",
+        "progress": 100
+      },
+      {
+        "type": "diff",
+        "title": "P1 · Unsafe renderer call",
+        "before": "return renderUnsafe(input);",
+        "after": "return render(input, safeContext);",
+        "annotations": {
+          "confidence": { "value": "96%" },
+          "risk": { "value": "high" },
+          "provenance": { "value": "src/preview.js:47" }
+        }
+      },
+      {
+        "type": "gate",
+        "id": "gstack_apply_gate",
+        "gate_id": "gate_gstack_001",
+        "action": "Apply the review fix?",
+        "effect_summary": {
+          "reversibility": "Git revert",
+          "blast_radius": "Renderer preview path"
+        },
+        "resolutions": ["approve", "deny", "modify"]
+      }
+    ]
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

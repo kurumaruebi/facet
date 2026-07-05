@@ -5,6 +5,8 @@
 .host-brand h1 { margin: 0; font-size: 1rem; }
 .host-brand p { margin: 2px 0 0; color: #8d98aa; font-size: .75rem; }
 .host-actions { display: flex; align-items: center; gap: 12px; }
+.host-select { display: flex; align-items: center; gap: 7px; color: #a7b0c0; font-size: .8rem; }
+.host-select select { border: 1px solid #394151; border-radius: 8px; padding: 7px 9px; background: #151b25; color: #dce2ec; }
 .host-toggle { display: flex; align-items: center; gap: 7px; color: #a7b0c0; font-size: .8rem; }
 .host-button { border: 1px solid #394151; border-radius: 8px; padding: 7px 10px; background: #151b25; color: #dce2ec; cursor: pointer; }
 .host-board { display: grid; grid-template-columns: 1fr; gap: 16px; }

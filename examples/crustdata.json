@@ -1,0 +1,53 @@
+{
+  "root": {
+    "type": "collection",
+    "id": "crustdata_results",
+    "title": "Crustdata · Company signals",
+    "subtitle": "Fresh data with nested quantitative context.",
+    "layout": "feed",
+    "children": [
+      {
+        "type": "table",
+        "id": "company_table",
+        "title": "Fast-growing infrastructure companies",
+        "rows": { "source": "companies" },
+        "columns": [
+          { "label": "Company", "cell": { "type": "text", "bind": "name" } },
+          { "label": "Headcount", "cell": { "type": "text", "bind": "headcount", "format": "number" } },
+          { "label": "Growth", "cell": { "type": "chart", "data": { "bind": "growth" }, "zoom": "summary" } }
+        ],
+        "annotations": {
+          "freshness": { "value": "Updated 4 minutes ago" }
+        }
+      },
+      {
+        "type": "card",
+        "id": "company_detail",
+        "title": "{name}",
+        "fields": [
+          { "label": "Headcount", "bind": "headcount", "format": "number" },
+          { "label": "Signal", "bind": "signal" }
+        ]
+      },
+      {
+        "type": "timeline",
+        "title": "Signal history",
+        "items": [
+          { "time": "May", "title": "Hiring acceleration detected" },
+          { "time": "June", "title": "New engineering hub opened" },
+          { "time": "July", "title": "Query refreshed" }
+        ]
+      }
+    ]
+  },
+  "data": {
+    "companies": [
+      { "name": "Northstar", "headcount": 420, "signal": "Platform hiring", "growth": [18, 24, 31] },
+      { "name": "Vector Labs", "headcount": 265, "signal": "New region", "growth": [12, 19, 27] }
+    ]
+  },
+  "links": [
+    { "on": "company_table.select", "target": "company_detail" }
+  ],
+  "params": {}
+}

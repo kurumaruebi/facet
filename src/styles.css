@@ -99,6 +99,13 @@ button, input, select { font: inherit; }
 
 .facet-gate { border-color: #645f36; background: linear-gradient(145deg, #1b1a12, var(--surface)); }
 .facet-gate__notice { color: #c3b970; font-size: .82rem; }
+.facet-gate__effects { margin-bottom: 12px; }
+.facet-gate__comment { width: 100%; min-height: 64px; resize: vertical; margin-top: 12px; border: 1px solid var(--border); border-radius: 9px; padding: 9px; background: #0d1118; color: inherit; font: inherit; }
+.facet-gate__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.facet-gate__button { border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; background: #1a202b; color: inherit; cursor: pointer; }
+.facet-gate__button--approve { border-color: #3f8062; background: #163125; }
+.facet-gate__button--deny { border-color: #80464e; background: #321a1d; }
+.facet-gate__result { color: #d6ddE8; }
 .facet-status__summary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .facet-status__dot { width: 9px; height: 9px; border-radius: 50%; background: #9ba4b5; }
 .facet-status--running .facet-status__dot, .facet-status--healthy .facet-status__dot, .facet-status--passed .facet-status__dot { background: #5ad699; box-shadow: 0 0 12px #5ad699; }

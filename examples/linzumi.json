@@ -1,0 +1,38 @@
+{
+  "root": {
+    "type": "collection",
+    "id": "linzumi_unblock",
+    "title": "Linzumi · Agent unblock request",
+    "subtitle": "The agent is paused at a commitment point.",
+    "layout": "feed",
+    "children": [
+      {
+        "type": "status",
+        "title": "Migration run",
+        "state": "running",
+        "message": "Waiting for approval",
+        "progress": 68,
+        "logs": ["Schema checked", "Backup created", "Approval required"]
+      },
+      {
+        "type": "diff",
+        "title": "Database change",
+        "before": "users.plan: varchar(16)",
+        "after": "users.plan: varchar(32)"
+      },
+      {
+        "type": "gate",
+        "id": "linzumi_migration_gate",
+        "gate_id": "gate_linzumi_001",
+        "action": "Resume the migration?",
+        "effect_summary": {
+          "reversibility": "Backup restore required",
+          "blast_radius": "User plan metadata"
+        }
+      }
+    ]
+  },
+  "data": {},
+  "links": [],
+  "params": {}
+}

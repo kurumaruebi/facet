@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://facet.dev/schema/facet.schema.json",
+  "title": "Facet IR Document",
+  "type": "object",
+  "required": ["root"],
+  "properties": {
+    "root": { "$ref": "#/$defs/node" },
+    "data": { "type": "object" },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["on", "target"],
+        "properties": {
+          "on": { "type": "string", "pattern": "^[^.]+\\.select$" },
+          "target": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "params": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "required": ["bind"],
+      "properties": {
+        "bind": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "annotation": {
+      "oneOf": [
+        { "$ref": "#/$defs/binding" },
+        {
+          "anyOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {}
+          },
+          "required": ["value"],
+          "additionalProperties": true
+        }
+      ]
+    },
+    "annotations": {
+      "type": "object",
+      "properties": {
+        "confidence": { "$ref": "#/$defs/annotation" },
+        "provenance": { "$ref": "#/$defs/annotation" },
+        "freshness": { "$ref": "#/$defs/annotation" },
+        "uncertainty": { "$ref": "#/$defs/annotation" },
+        "risk": { "$ref": "#/$defs/annotation" }
+      },
+      "additionalProperties": false
+    },
+    "node": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": [
+            "card",
+            "collection",
+            "table",
+            "tree",
+            "graph",
+            "timeline",
+            "chart",
+            "map",
+            "text",
+            "media",
+            "diff",
+            "control",
+            "gate",
+            "status"
+          ]
+        },
+        "id": { "type": "string", "minLength": 1 },
+        "title": {},
+        "subtitle": {},
+        "description": {},
+        "bind": { "type": "string", "minLength": 1 },
+        "format": { "enum": ["currency", "date", "number"] },
+        "zoom": { "enum": ["summary", "full"] },
+        "annotations": { "$ref": "#/$defs/annotations" },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" }
+        },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" }
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {},
+              "key": { "type": "string" },
+              "bind": { "type": "string" },
+              "format": { "enum": ["currency", "date", "number"] },
+              "cell": { "$ref": "#/$defs/node" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "controls": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

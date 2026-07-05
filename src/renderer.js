@@ -401,8 +401,9 @@ function renderDiff(node, ctx) {
 
 function renderControl(node, ctx) {
   const wrapper = element("label", "facet-control");
-  append(wrapper, element("span", "facet-control__label", resolve(node.label ?? node.param, ctx)));
-  const current = node.param ? ctx.params?.get?.(node.param) : resolveBind(node.bind, ctx);
+  const param = node.param ?? node.bind;
+  append(wrapper, element("span", "facet-control__label", resolve(node.label ?? param, ctx)));
+  const current = ctx.params?.get?.(param);
   let input;
   if (node.kind === "choice") {
     input = element("select", "facet-control__input");
@@ -428,8 +429,8 @@ function renderControl(node, ctx) {
       : input.type === "range"
         ? Number(input.value)
         : input.value;
-    if (node.param) ctx.params?.set?.(node.param, value);
-    ctx.emit?.("change", node.id, { param: node.param, value });
+    if (param) ctx.params?.set?.(param, value);
+    ctx.emit?.("change", node.id, { param, value });
   });
   append(wrapper, input);
   return wrapper;
@@ -576,6 +577,7 @@ export function render(node, ctx = {}) {
   try {
     if (!validateNode(node)) return renderCardText(node);
     const normalizedCtx = {
+      ...ctx,
       data: ctx.data ?? {},
       params: ctx.params,
       emit: ctx.emit,

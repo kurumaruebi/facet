@@ -1,0 +1,68 @@
+{
+  "root": {
+    "type": "collection",
+    "id": "jinba_workflow",
+    "title": "Jinba · Compliance workflow",
+    "subtitle": "Structured intake, live state, and an auditable commitment.",
+    "layout": "feed",
+    "children": [
+      {
+        "type": "collection",
+        "title": "Intake",
+        "layout": "grid",
+        "children": [
+          {
+            "type": "control",
+            "id": "risk_control",
+            "kind": "choice",
+            "label": "Risk level",
+            "bind": "risk_level",
+            "options": ["low", "medium", "high"]
+          },
+          {
+            "type": "control",
+            "id": "amount_control",
+            "kind": "range",
+            "label": "Transaction amount",
+            "bind": "amount",
+            "min": 0,
+            "max": 100,
+            "step": 5
+          }
+        ]
+      },
+      {
+        "type": "status",
+        "title": "Policy checks",
+        "state": "healthy",
+        "message": "4 of 4 checks complete",
+        "progress": 100
+      },
+      {
+        "type": "timeline",
+        "title": "Workflow",
+        "items": [
+          { "time": "09:10", "title": "Request submitted" },
+          { "time": "09:12", "title": "Policy checks completed" },
+          { "time": "Now", "title": "Human approval required" }
+        ]
+      },
+      {
+        "type": "gate",
+        "id": "jinba_release_gate",
+        "gate_id": "gate_jinba_001",
+        "action": "Release the compliant workflow?",
+        "effect_summary": {
+          "reversibility": "Can be suspended after release",
+          "blast_radius": "One customer workflow"
+        }
+      }
+    ]
+  },
+  "data": {},
+  "links": [],
+  "params": {
+    "risk_level": "medium",
+    "amount": 45
+  }
+}
