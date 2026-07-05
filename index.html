@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Facet deterministic IR renderer" />
+    <title>Facet Renderer</title>
+  </head>
+  <body>
+    <main id="app" class="host-shell" data-raw-visible="true">
+      <nav class="host-nav">
+        <div class="host-brand">
+          <span class="host-brand__mark">F</span>
+          <div>
+            <h1>Facet renderer</h1>
+            <p>Typed IR in. Deterministic interface out.</p>
+          </div>
+        </div>
+        <div class="host-actions">
+          <button id="fallback-demo" class="host-button" type="button">Test fallback</button>
+          <label class="host-toggle">
+            <input id="raw-toggle" type="checkbox" checked />
+            Show raw IR
+          </label>
+        </div>
+      </nav>
+      <div class="host-board">
+        <section id="rendered" aria-label="Rendered Facet interface"></section>
+        <pre id="raw" class="host-raw" aria-label="Raw Facet IR"></pre>
+      </div>
+    </main>
+    <script type="module" src="/src/demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "facet-renderer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test",
+    "check": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "happy-dom": "^20.10.6",
+    "vite": "^7.0.0"
+  }
+}
